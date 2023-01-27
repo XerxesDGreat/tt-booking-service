@@ -1,7 +1,7 @@
-asyncapi: 2.5.0
+asyncapi: '2.4.0'
 info:
   title: Booking Service
-  version: 0.1.0
+  version: '0.1.0'
   description: Allows guests to book a trip
 servers:
   demo:
