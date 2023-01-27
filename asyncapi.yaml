@@ -9,21 +9,31 @@ servers:
     url: localhost:9092
 channels:
   tripBooked:
+    description: Channel used when a trip has been booked
     publish:
       bindings:
         kafka:
-          groupId: my-group
+          groupId: booking-group
       operationId: bookTrip
       message:
+        name: tripBookedMessage
+        title: Trip Booked Message
         description: An event describing that a trip was just booked
         schemaFormat: 'application/vnd.apache.avro;version=1.9.0'
         payload:
           # using the github link
           $ref: 'https://raw.githubusercontent.com/XerxesDGreat/tt-shared-schemas/main/messages/tripBooked.avsc'
-  # tripBookedMetric:
-  #   publish:
-  #     message:
-  #       description: An event containing metrics about the trip which was just booked
-  #       schemaFormat:  'application/vnd.apache.avro;version=1.9.0'
-  #       payload:
-  #         $ref: '../tt-shared-schemas/messages/tripBookedMetric.avsc'
+  tripBookedMetric:
+    description: Channel used for publishing event metrics
+    publish:
+      bindings:
+        kafka:
+          groupId: metrics-group
+      operationId: publishMetric
+      message:
+        name: tripBookedMetricMessage
+        title: Trip Booked Metric Message
+        description: An event containing metrics about the trip which was just booked
+        schemaFormat:  'application/vnd.apache.avro;version=1.9.0'
+        payload:
+          $ref: 'https://raw.githubusercontent.com/XerxesDGreat/tt-shared-schemas/main/messages/eventMetric.avsc'
