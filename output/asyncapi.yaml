@@ -1,7 +1,7 @@
-asyncapi: 2.5.0
+asyncapi: '2.4.0'
 info:
   title: Booking Service
-  version: 0.1.0
+  version: '0.1.0'
   description: Allows guests to book a trip
 servers:
   demo:
@@ -18,7 +18,8 @@ channels:
         description: An event describing that a trip was just booked
         schemaFormat: 'application/vnd.apache.avro;version=1.9.0'
         payload:
-          $ref: '../tt-shared-schemas/messages/tripBooked.avsc'
+          # using the github link
+          $ref: 'https://raw.githubusercontent.com/XerxesDGreat/tt-shared-schemas/main/messages/tripBooked.avsc'
   # tripBookedMetric:
   #   publish:
   #     message:
