@@ -23,7 +23,7 @@ channels:
         payload:
           # using the github link
           $ref: 'https://raw.githubusercontent.com/XerxesDGreat/tt-shared-schemas/main/messages/tripBooked.avsc'
-  tripBookedMetric:
+  metricsEventTriggered:
     description: Channel used for publishing event metrics
     publish:
       bindings:
@@ -31,9 +31,9 @@ channels:
           groupId: metrics-group
       operationId: publishMetric
       message:
-        name: tripBookedMetricMessage
-        title: Trip Booked Metric Message
-        description: An event containing metrics about the trip which was just booked
+        name: metricsEventMessage
+        title: Metrics Event Message
+        description: An event containing metrics to be recorded
         schemaFormat:  'application/vnd.apache.avro;version=1.9.0'
         payload:
           $ref: 'https://raw.githubusercontent.com/XerxesDGreat/tt-shared-schemas/main/messages/eventMetric.avsc'
