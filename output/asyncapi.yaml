@@ -1,0 +1,28 @@
+asyncapi: 2.5.0
+info:
+  title: Booking Service
+  version: 0.1.0
+  description: Allows guests to book a trip
+servers:
+  demo:
+    protocol: kafka
+    url: localhost:9092
+channels:
+  tripBooked:
+    publish:
+      bindings:
+        kafka:
+          groupId: my-group
+      operationId: bookTrip
+      message:
+        description: An event describing that a trip was just booked
+        schemaFormat: 'application/vnd.apache.avro;version=1.9.0'
+        payload:
+          $ref: '../tt-shared-schemas/messages/tripBooked.avsc'
+  # tripBookedMetric:
+  #   publish:
+  #     message:
+  #       description: An event containing metrics about the trip which was just booked
+  #       schemaFormat:  'application/vnd.apache.avro;version=1.9.0'
+  #       payload:
+  #         $ref: '../tt-shared-schemas/messages/tripBookedMetric.avsc'
