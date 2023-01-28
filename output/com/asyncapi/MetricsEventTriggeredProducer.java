@@ -35,11 +35,11 @@ import org.apache.kafka.clients.producer.ProducerRecord;
   
 import com.asyncapi.models.TripBookedMessage;
 import com.asyncapi.models.MetricsEventMessage;
-public class TripBookedProducer  extends PubSubBase{
+public class MetricsEventTriggeredProducer  extends PubSubBase{
 
     private KafkaProducer producer = null;
   
-  public TripBookedProducer() {
+  public MetricsEventTriggeredProducer() {
     
     super();
     String id = "my-publisher";
@@ -47,7 +47,7 @@ public class TripBookedProducer  extends PubSubBase{
     logger.info("Pub application is starting");
 
     // prepare connection for producer
-    createConnection("tripBooked", id);
+    createConnection("metricsEventTriggered", id);
 
     producer = ch.createProducer();
 

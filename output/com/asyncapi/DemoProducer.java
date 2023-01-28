@@ -17,21 +17,27 @@
 package com.asyncapi;
   
 import com.asyncapi.TripBookedProducer;
+import com.asyncapi.MetricsEventTriggeredProducer;
 import com.asyncapi.ConnectionHelper;
-import com.asyncapi.models.AnonymousMessage1;
+import com.asyncapi.models.TripBookedMessage;
+import com.asyncapi.models.MetricsEventMessage;
 import java.util.UUID;
 
 public class DemoProducer {
     public static void main(String[] args) {
 
         // Create an instance of a message model to be sent
-        AnonymousMessage1 message = new AnonymousMessage1("Producer", "React", 206, 36);
+        TripBookedMessage message = new TripBookedMessage("Endpoint", "Example", 965, 580);
 
         // Create a producer instance to connect to the server
         TripBookedProducer producer = new TripBookedProducer();
 
         // Send the message object through the server
         producer.send(message);
+
+        MetricsEventMessage msg = new MetricsEventMessage(123, "tripBooked", message.toString());
+        MetricsEventTriggeredProducer p = new MetricsEventTriggeredProducer();
+        p.send(msg);
 
         // Close the connection
         producer.close();

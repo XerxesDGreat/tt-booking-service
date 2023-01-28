@@ -18,23 +18,20 @@ package com.asyncapi.models;
   
 import com.asyncapi.models.ModelContract;
 import java.util.UUID;
-public class AnonymousMessage1  extends ModelContract{
-  public String startDate;
-  public String endDate;
-  public int guestId;
-  public int vehicleId;
-  public AnonymousMessage1(String startDate,String endDate,int guestId,int vehicleId) {
+public class MetricsEventMessage  extends ModelContract{
+  public int timestamp;
+  public String eventName;
+  public String value;
+  public MetricsEventMessage(int timestamp,String eventName,String value) {
     
-    this.startDate = startDate;
+    this.timestamp = timestamp;
     
-    this.endDate = endDate;
+    this.eventName = eventName;
     
-    this.guestId = guestId;
-    
-    this.vehicleId = vehicleId;
+    this.value = value;
     
   }
-  public AnonymousMessage1() {
+  public MetricsEventMessage() {
     super();
   }
 }
